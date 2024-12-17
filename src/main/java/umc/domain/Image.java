@@ -1,8 +1,14 @@
 package umc.domain;
 
 import jakarta.persistence.*;
+import lombok.*;
 import umc.domain.common.BaseEntity;
 
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Image extends BaseEntity {
 
     @Id
