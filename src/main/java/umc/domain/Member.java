@@ -1,9 +1,16 @@
 package umc.domain;
 
 import jakarta.persistence.*;
+import lombok.*;
 import umc.domain.common.BaseEntity;
+import umc.domain.enums.LetterType;
 import umc.domain.enums.MemberStatus;
 
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Member extends BaseEntity {
 
     @Id
@@ -23,4 +30,8 @@ public class Member extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "letterBox_id", nullable = false)
     private LetterBox letterBox;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "letter_id", nullable = false)
+    private Letter letter;
 }
