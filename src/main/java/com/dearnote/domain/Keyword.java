@@ -18,6 +18,9 @@ public class Keyword extends BaseEntity {
     @Column(nullable = false, columnDefinition = "VARCHAR(100)")
     private String keyword;
 
+    @Column(nullable = true, columnDefinition = "VARCHAR(100)")
+    private String sentence;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "letter_id", nullable = false)
     private Letter letter;
