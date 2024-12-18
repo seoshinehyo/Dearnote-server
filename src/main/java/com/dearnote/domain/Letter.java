@@ -1,10 +1,9 @@
 package com.dearnote.domain;
 
+import com.dearnote.domain.enums.*;
 import jakarta.persistence.*;
 import lombok.*;
 import com.dearnote.domain.common.BaseEntity;
-import com.dearnote.domain.enums.LetterStatus;
-import com.dearnote.domain.enums.LetterType;
 
 @Entity
 @Getter
@@ -27,6 +26,21 @@ public class Letter extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15)")
     private LetterStatus status;
+
+    @Column(nullable = true, columnDefinition = "VARCHAR(100)")
+    private String imageDescription;
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'RIDIBatang'")
+    private Font font;
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15)")
+    private LetterPaper letterPaper;
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15)")
+    private Wax wax;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "letterBox_id", nullable = false)
