@@ -3,7 +3,6 @@ package com.dearnote.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import com.dearnote.domain.common.BaseEntity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +21,6 @@ public class LetterBox extends BaseEntity {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "letter_id", nullable = false)
+    @OneToMany(mappedBy = "letterBox", cascade = CascadeType.ALL)
     private List<Letter> letterList = new ArrayList<>();
-
 }
