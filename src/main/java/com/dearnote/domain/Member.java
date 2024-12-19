@@ -28,8 +28,7 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private MemberStatus status;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "letter_box_id", nullable = false)
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private LetterBox letterBox;
 
     @OneToMany(mappedBy = "sender")
