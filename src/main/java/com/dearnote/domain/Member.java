@@ -5,6 +5,9 @@ import lombok.*;
 import com.dearnote.domain.common.BaseEntity;
 import com.dearnote.domain.enums.MemberStatus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -30,7 +33,9 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "letterBox_id", nullable = false)
     private LetterBox letterBox;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "letter_id", nullable = false)
-    private Letter letter;
+    @OneToMany(mappedBy = "sender")
+    private List<Letter> sentLetters = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiver")
+    private List<Letter> receivedLetters = new ArrayList<>();
 }
