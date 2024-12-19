@@ -24,6 +24,6 @@ public class MemberQueryServiceImpl implements MemberQueryService{
 
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
-        return letterRepository.findAllByMember(member, PageRequest.of(page, 10));
+        return letterRepository.findAllByReceiver(member, PageRequest.of(page, 10));
     }
 }

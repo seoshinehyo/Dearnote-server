@@ -20,26 +20,21 @@ public class Letter extends BaseEntity {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'RECEIVED'")
     private LetterType type;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
     private LetterStatus status;
 
     @Column(nullable = true, columnDefinition = "VARCHAR(100)")
     private String imageDescription;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'RIDIBatang'")
     private Font font;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
     private LetterPaper letterPaper;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
     private Wax wax;
 
     private Boolean mark;
