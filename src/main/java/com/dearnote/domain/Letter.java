@@ -27,6 +27,10 @@ public class Letter extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(15)")
     private LetterStatus status;
 
+    private Boolean mark;
+
+    private Boolean isPublic;
+
     @Column(nullable = true, columnDefinition = "VARCHAR(100)")
     private String imageDescription;
 
@@ -46,7 +50,11 @@ public class Letter extends BaseEntity {
     @JoinColumn(name = "letterBox_id", nullable = false)
     private LetterBox letterBox;
 
-    @OneToOne
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sender_id", nullable = false)
+    private Member sender;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "receiver_id", nullable = false)
+    private Member receiver;
 }
