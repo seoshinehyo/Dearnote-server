@@ -21,6 +21,9 @@ public class Image extends BaseEntity {
     @Column(nullable = true, columnDefinition = "VARCHAR(300)")
     private String storeFileName;
 
+    @Column(nullable = true, columnDefinition = "VARCHAR(300)")
+    private String storeFileUrl;
+
     private Integer size;
 
     @OneToOne(fetch = FetchType.LAZY)

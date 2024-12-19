@@ -41,20 +41,10 @@ dependencies {
     //env
     implementation 'me.paulschwarz:spring-dotenv:3.0.0'
 
-    // spring-security dependency
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    testImplementation 'org.springframework.security:spring-security-test'
 
-    // oauth2 dependency
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
-    implementation 'com.auth0:java-jwt:4.3.0'
-
-    // jwt token dependency
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
-    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
-    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
-    implementation 'javax.xml.bind:jaxb-api:2.3.0' // java 버전에 따른 JAXV API 제거로 인한 의존성 추가
+    // AWS S3
+    implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.4'
 
 }
 
