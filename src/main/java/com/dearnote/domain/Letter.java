@@ -24,7 +24,6 @@ public class Letter extends BaseEntity {
     private LetterType type;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
     private LetterStatus status;
 
     private Boolean mark;
@@ -35,19 +34,16 @@ public class Letter extends BaseEntity {
     private String imageDescription;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'RIDIBatang'")
     private Font font;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
     private LetterPaper letterPaper;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
     private Wax wax;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "letterBox_id", nullable = false)
+    @JoinColumn(name = "letter_box_id", nullable = false)
     private LetterBox letterBox;
 
     @ManyToOne(fetch = FetchType.LAZY)
