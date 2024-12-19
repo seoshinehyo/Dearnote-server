@@ -42,11 +42,29 @@ public class Letter extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(15)")
     private Wax wax;
 
+    private Boolean mark;
+
+    @Column(nullable = false, columnDefinition = "boolean")
+    private Boolean isPublic;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "letterBox_id", nullable = false)
     private LetterBox letterBox;
 
-    @OneToOne
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sender_id", nullable = false)
+    private Member sender;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "receiver_id", nullable = false)
+    private Member receiver;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "keyword_id", nullable = false)
+    private Keyword keyword;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id", nullable = true)
+    private Image image;
+
 }
