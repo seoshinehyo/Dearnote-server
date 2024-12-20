@@ -30,11 +30,9 @@ public class MemberQueryServiceImpl implements MemberQueryService {
 
     @Override
     public Page<Letter> getAllLetterList(Long memberId, Integer page){
-        final Logger logger = LoggerFactory.getLogger(MemberQueryServiceImpl.class);
-
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         return letterRepository.findAllBySender(member, PageRequest.of(page, 10));
     }
 
@@ -42,7 +40,7 @@ public class MemberQueryServiceImpl implements MemberQueryService {
     public Page<Letter> getReceivedLetterList(Long memberId, Integer page){
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         return letterRepository.findAllBySenderAndType(member, LetterType.RECEIVED, PageRequest.of(page, 10));
     }
 
@@ -50,7 +48,7 @@ public class MemberQueryServiceImpl implements MemberQueryService {
     public Page<Letter> getSentLetterList(Long memberId, Integer page){
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         return letterRepository.findAllBySenderAndType(member, LetterType.SENT, PageRequest.of(page, 10));
     }
 
@@ -58,14 +56,14 @@ public class MemberQueryServiceImpl implements MemberQueryService {
     public Page<Letter> getSelfLetterList(Long memberId, Integer page){
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         return letterRepository.findAllBySenderAndType(member, LetterType.SELF, PageRequest.of(page, 10));
     }
 
     @Override
     public Page<Letter> getMarkedLetterList(Long memberId, Integer page){
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
         return letterRepository.findAllBySenderAndMarkTrue(member, PageRequest.of(page, 10));
     }
 
