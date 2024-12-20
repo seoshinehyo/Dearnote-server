@@ -1,6 +1,6 @@
 package com.dearnote.web.controller;
 
-import com.dearnote.apipayload.ApiResponse;
+import com.dearnote.apiPayload.ApiResponse;
 import com.dearnote.converter.LetterConverter;
 import com.dearnote.domain.Keyword;
 import com.dearnote.domain.Letter;

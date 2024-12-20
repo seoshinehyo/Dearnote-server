@@ -1,7 +1,7 @@
-package com.dearnote.apipayload.exception;
+package com.dearnote.apiPayload.exception;
 
-import com.dearnote.apipayload.code.BaseErrorCode;
-import com.dearnote.apipayload.code.ErrorReasonDTO;
+import com.dearnote.apiPayload.code.BaseErrorCode;
+import com.dearnote.apiPayload.code.ErrorReasonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

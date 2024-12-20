@@ -1,4 +1,4 @@
-package com.dearnote.apipayload.code;
+package com.dearnote.apiPayload.code;
 
 public interface BaseErrorCode {
 

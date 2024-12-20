@@ -1,7 +1,7 @@
-package com.dearnote.apipayload.exception.handler;
+package com.dearnote.apiPayload.exception.handler;
 
-import com.dearnote.apipayload.code.BaseErrorCode;
-import com.dearnote.apipayload.exception.GeneralException;
+import com.dearnote.apiPayload.code.BaseErrorCode;
+import com.dearnote.apiPayload.exception.GeneralException;
 
 public class MemberHandler extends GeneralException {
 

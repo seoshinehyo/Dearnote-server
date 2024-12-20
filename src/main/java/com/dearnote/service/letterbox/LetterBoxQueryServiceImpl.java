@@ -1,7 +1,7 @@
 package com.dearnote.service.letterbox;
 
-import com.dearnote.apipayload.code.status.ErrorStatus;
-import com.dearnote.apipayload.exception.handler.MemberHandler;
+import com.dearnote.apiPayload.code.status.ErrorStatus;
+import com.dearnote.apiPayload.exception.handler.MemberHandler;
 import com.dearnote.domain.LetterBox;
 import com.dearnote.repository.LetterBoxRepository;
 import lombok.RequiredArgsConstructor;
