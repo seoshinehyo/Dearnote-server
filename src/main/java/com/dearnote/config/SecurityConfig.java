@@ -84,13 +84,24 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/","/wax","/logout","/docs","/api/auth/status").permitAll()
                         .anyRequest().authenticated());
 
         //세션 설정 : STATELESS
         http
                 .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+        http.logout(logout -> logout
+                .logoutUrl("/logout") // 로그아웃 경로
+                .logoutSuccessHandler((request, response, authentication) -> {
+                    // 로그아웃 성공 시 처리
+                    response.setStatus(200); // HTTP 상태 200
+                    response.getWriter().write("Logout successful");
+                })
+                .invalidateHttpSession(true) // 세션 무효화
+                .deleteCookies("JSESSIONID", "Authorization") // 쿠키 삭제
+        );
 
         return http.build();
     }

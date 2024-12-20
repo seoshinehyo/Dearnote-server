@@ -14,7 +14,7 @@ spring:
       ddl-auto: update
 
   jwt:
-    secret-key: "asdfsadfasdfasddsa"
+    secret-key: "asdfsadfasdfasddsaasdfasfasdfsafsadfsa"
     expiration-time: 86400000 # 1일
 
 #  cloud:

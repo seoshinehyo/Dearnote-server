@@ -9,6 +9,8 @@ public class MemberConverter {
 
     public static Member toMember(MemberDTO.JoinDTO request) {
 
+
+
         return Member.builder()
                 .name(request.getName())
                 .email(request.getEmail())

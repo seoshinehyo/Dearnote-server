@@ -1,6 +1,9 @@
 package com.dearnote.web.controller;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -9,37 +12,44 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
-@Controller
+@RestController
 public class OAuth2Controller {
 
-    // 로그인 성공 시 리다이렉트
-    @GetMapping("/login/success")
-    public String loginSuccess(OAuth2AuthenticationToken authentication) {
-        OAuth2User principal = authentication.getPrincipal();
-        String name = principal.getAttribute("name");
-        String email = principal.getAttribute("email");
 
-        // 로그인 후 메인 페이지로 리다이렉트
-        return "redirect:/home";  // /home 페이지로 리다이렉트
+    @GetMapping("/logout-success")
+    @Operation(summary = "로그아웃 성공", description = "로그아웃이 성공적으로 이루어진 후 반환되는 메시지를 확인합니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "로그아웃 성공 메시지")
+    })
+    public String logoutSuccessPage() {
+        return "로그아웃 되었습니다. 다시 로그인해 주세요.";
     }
 
-    // 로그인 페이지
-    @GetMapping("/login")
-    public String loginPage() {
-        // 이미 로그인한 상태라면 /home 페이지로 리다이렉트
+
+
+    @Operation(summary = "로그인 상태 확인", description = "현재 로그인 상태를 확인합니다.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "로그인 상태 확인 성공")
+    })
+    @GetMapping("/api/auth/status")
+    public Map<String, Object> checkLoginStatus() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            return "redirect:/home";  // 이미 로그인된 경우 /home으로 리다이렉트
-        }
-        return "login";  // 로그인 페이지로 리턴
-    }
+        Map<String, Object> response = new HashMap<>();
 
-    // 메인 페이지
-    @GetMapping("/home")
-    public String homePage() {
-        return "home";  // 메인 페이지로 리턴
+        if (authentication != null && authentication.isAuthenticated() && !"anonymousUser".equals(authentication.getName())) {
+            response.put("loggedIn", true);
+            response.put("username", authentication.getName());
+        } else {
+            response.put("loggedIn", false);
+        }
+
+        return response;
     }
 
 }
