@@ -1,4 +1,4 @@
-package com.dearnote.apipayload;
+package com.dearnote.apiPayload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,15 +1,15 @@
 package com.dearnote.apipayload.code.status;
 
 
-import com.dearnote.apipayload.code.BaseCode;
-import com.dearnote.apipayload.code.ReasonDTO;
+import com.dearnote.apiPayload.code.*;
+import com.dearnote.apiPayload.code.ReasonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum SuccessStatus implements BaseCode {
+public enum SuccessStatus implements com.dearnote.apipayload.code.BaseCode {
 
     // 일반적인 응답
     _OK(HttpStatus.OK, "COMMON200", "성공입니다.");

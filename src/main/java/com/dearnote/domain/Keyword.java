@@ -22,6 +22,5 @@ public class Keyword extends BaseEntity {
     private String sentence;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "letter_id", nullable = false)
     private Letter letter;
 }

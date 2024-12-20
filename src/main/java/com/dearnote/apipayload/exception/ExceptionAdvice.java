@@ -1,8 +1,8 @@
-package com.dearnote.apipayload.exception;
+package com.dearnote.apiPayload.exception;
 
-import com.dearnote.apipayload.ApiResponse;
-import com.dearnote.apipayload.code.ErrorReasonDTO;
-import com.dearnote.apipayload.code.status.ErrorStatus;
+import com.dearnote.apiPayload.ApiResponse;
+import com.dearnote.apiPayload.code.ErrorReasonDTO;
+import com.dearnote.apiPayload.code.status.ErrorStatus;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -59,8 +59,8 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
         return handleExceptionInternalFalse(e, ErrorStatus._INTERNAL_SERVER_ERROR, HttpHeaders.EMPTY, ErrorStatus._INTERNAL_SERVER_ERROR.getHttpStatus(),request, e.getMessage());
     }
 
-    @ExceptionHandler(value = GeneralException.class)
-    public ResponseEntity onThrowException(GeneralException generalException, HttpServletRequest request) {
+    @ExceptionHandler(value = com.dearnote.apipayload.exception.GeneralException.class)
+    public ResponseEntity onThrowException(com.dearnote.apipayload.exception.GeneralException generalException, HttpServletRequest request) {
         ErrorReasonDTO errorReasonHttpStatus = generalException.getErrorReasonHttpStatus();
         return handleExceptionInternal(generalException,errorReasonHttpStatus,null,request);
     }

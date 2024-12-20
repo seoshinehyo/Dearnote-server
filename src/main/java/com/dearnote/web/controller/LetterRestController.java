@@ -1,6 +1,6 @@
 package com.dearnote.web.controller;
 
-import com.dearnote.apipayload.ApiResponse;
+import com.dearnote.apiPayload.ApiResponse;
 import com.dearnote.domain.enums.LetterPaper;
 import com.dearnote.domain.enums.Wax;
 import com.dearnote.web.dto.letter.LetterResponseDTO;
