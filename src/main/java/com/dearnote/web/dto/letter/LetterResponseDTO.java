@@ -64,4 +64,14 @@ public class LetterResponseDTO {
         // 이미지 추가 예정
         private LocalDateTime createdAt;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class RandomKeywordResponseDTO{ // 키워드 랜덤 받아오기 DTO
+        private Long keywordId;
+        private String keyword;
+        private String sentence;
+    }
 }

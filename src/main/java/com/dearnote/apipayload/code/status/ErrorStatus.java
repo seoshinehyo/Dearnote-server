@@ -27,7 +27,6 @@ public enum ErrorStatus implements BaseErrorCode {
     // 키워드 관련 에러
     KEYWORD_NOT_FOUND(HttpStatus.BAD_REQUEST, "KEYWORD4001", "해당 키워드가 없습니다.");
 
-
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
