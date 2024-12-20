@@ -18,8 +18,13 @@ public enum ErrorStatus implements BaseErrorCode {
 
 
     // 편지 관려 에러
-    LETTER_NOT_FOUND(HttpStatus.BAD_REQUEST, "LETTER4001", "해당 편지가 없습니다.");
+    LETTER_NOT_FOUND(HttpStatus.BAD_REQUEST, "LETTER4001", "해당 편지가 없습니다."),
 
+    // 회원 관련 에러
+    MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER4001", "해당 회원이 없습니다."),
+
+    // 키워드 관련 에러
+    KEYWORD_NOT_FOUND(HttpStatus.BAD_REQUEST, "KEYWORD4001", "해당 키워드가 없습니다.");
 
 
     private final HttpStatus httpStatus;
