@@ -60,4 +60,5 @@ public class MemberQueryServiceImpl implements MemberQueryService{
                 .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
         return letterRepository.findAllBySenderAndMarkTrue(member, PageRequest.of(page, 10));
     }
+    //
 }
