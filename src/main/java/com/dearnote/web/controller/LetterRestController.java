@@ -10,7 +10,7 @@ import com.dearnote.domain.enums.LetterPaper;
 import com.dearnote.domain.enums.Wax;
 import com.dearnote.service.keyword.KeywordQueryService;
 import com.dearnote.service.letter.LetterCommandService;
-import com.dearnote.service.letterbox.LetterBoxCommandService;
+import com.dearnote.service.letterbox.LetterBoxQueryService;
 import com.dearnote.service.member.MemberQueryService;
 import com.dearnote.web.dto.letter.LetterRequestDTO;
 import com.dearnote.web.dto.letter.LetterResponseDTO;
@@ -32,7 +32,7 @@ public class LetterRestController {
     private final MemberQueryService memberQueryService;
     private final LetterCommandService letterCommandService;
     private final KeywordQueryService keywordQueryService;
-    private final LetterBoxCommandService letterBoxCommandService;
+    private final LetterBoxQueryService letterBoxCommandService;
 
     @GetMapping("/letterPaper")
     @Operation(summary = "사용 가능 편지지 조회 api", description = "사용 가능한 편지지를 조회하는 api입니다.")
@@ -64,7 +64,8 @@ public class LetterRestController {
         Member sender = memberQueryService.getMember(request.getSenderId());
         Member receiver = memberQueryService.getMember(request.getReceiverId());
         Keyword keyword = keywordQueryService.getKeyword(request.getKeywordId());
-        LetterBox letterBox = letterBoxCommandService.createLetterBox(request.getSenderId());
+
+        LetterBox letterBox = letterBoxCommandService.getLetterBox(request.getSenderId());
 
         Letter sendLetter = LetterConverter.toSendLetter(request, sender, receiver, keyword, letterBox);
 
