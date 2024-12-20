@@ -28,7 +28,13 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private MemberStatus status;
 
-    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
+    @Column(nullable = false)
+    private String username;
+
+
+    private String role;
+
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
     private LetterBox letterBox;
 
     @OneToMany(mappedBy = "sender")
@@ -36,4 +42,9 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "receiver")
     private List<Letter> receiverList = new ArrayList<>();
+
+    public void updateEmailAndName(String email, String name) {
+        this.email = email;
+        this.name = name;
+    }
 }
