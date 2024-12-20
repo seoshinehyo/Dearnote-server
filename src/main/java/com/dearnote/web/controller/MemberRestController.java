@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.dearnote.apiPayload.*;
+import com.dearnote.apipayload.*;
 
 
 @RestController

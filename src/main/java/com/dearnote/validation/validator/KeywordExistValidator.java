@@ -1,6 +1,6 @@
 package com.dearnote.validation.validator;
 
-import com.dearnote.apiPayload.code.status.ErrorStatus;
+import com.dearnote.apipayload.code.status.ErrorStatus;
 import com.dearnote.repository.KeywordRepository;
 import com.dearnote.validation.annotation.ExistKeyword;
 import jakarta.validation.ConstraintValidator;

@@ -1,8 +1,8 @@
 package com.dearnote.apipayload.code.status;
 
 
-import com.dearnote.apiPayload.code.BaseCode;
-import com.dearnote.apiPayload.code.ReasonDTO;
+import com.dearnote.apipayload.code.BaseCode;
+import com.dearnote.apipayload.code.ReasonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

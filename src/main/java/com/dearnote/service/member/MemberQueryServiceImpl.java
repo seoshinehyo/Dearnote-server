@@ -1,15 +1,13 @@
 package com.dearnote.service.member;
 
-import com.dearnote.apiPayload.code.status.ErrorStatus;
-import com.dearnote.apiPayload.exception.handler.MemberHandler;
+import com.dearnote.apipayload.code.status.ErrorStatus;
+import com.dearnote.apipayload.exception.handler.MemberHandler;
 import com.dearnote.domain.Letter;
 import com.dearnote.domain.Member;
 import com.dearnote.domain.enums.LetterType;
 import com.dearnote.repository.LetterRepository;
 import com.dearnote.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

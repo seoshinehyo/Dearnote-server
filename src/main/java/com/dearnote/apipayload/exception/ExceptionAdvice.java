@@ -1,8 +1,8 @@
-package com.dearnote.apiPayload.exception;
+package com.dearnote.apipayload.exception;
 
-import com.dearnote.apiPayload.ApiResponse;
-import com.dearnote.apiPayload.code.ErrorReasonDTO;
-import com.dearnote.apiPayload.code.status.ErrorStatus;
+import com.dearnote.apipayload.ApiResponse;
+import com.dearnote.apipayload.code.ErrorReasonDTO;
+import com.dearnote.apipayload.code.status.ErrorStatus;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;

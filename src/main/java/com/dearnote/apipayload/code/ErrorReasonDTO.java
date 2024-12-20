@@ -1,4 +1,4 @@
-package com.dearnote.apiPayload.code;
+package com.dearnote.apipayload.code;
 
 import lombok.Builder;
 import lombok.Getter;

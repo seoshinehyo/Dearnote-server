@@ -1,6 +1,6 @@
 package com.dearnote.validation.validator;
 
-import com.dearnote.apiPayload.code.status.ErrorStatus;
+import com.dearnote.apipayload.code.status.ErrorStatus;
 import com.dearnote.validation.annotation.CheckPage;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
