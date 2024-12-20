@@ -37,11 +37,11 @@ public class MemberRestController {
     @Parameters({
             @Parameter(name = "memberId", description = "회원의 아이디, path variable 입니다!")
     })
-    public ApiResponse<MemberResponseDTO.LetterPreviewListDTO> getLetterList(
+    public ApiResponse<MemberResponseDTO.LetterPreviewListDTO> getAllLetterList(
     @ExistMember @PathVariable(name = "memberId") Long memberId,
     @CheckPage @RequestParam(name = "page") Integer page
     ){
-        Page<Letter> letterList =  memberQueryService.getLetterList(memberId,page - 1);
+        Page<Letter> letterList =  memberQueryService.getAllLetterList(memberId,page - 1);
         return ApiResponse.onSuccess(MemberConverter.letterPreviewListDTO(letterList));
     }
 }

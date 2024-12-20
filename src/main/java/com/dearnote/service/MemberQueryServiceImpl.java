@@ -20,10 +20,10 @@ public class MemberQueryServiceImpl implements MemberQueryService{
     private final LetterRepository letterRepository;
 
     @Override
-    public Page<Letter> getLetterList(Long memberId, Integer page){
+    public Page<Letter> getAllLetterList(Long memberId, Integer page){
 
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
-        return letterRepository.findAllByReceiver(member, PageRequest.of(page, 10));
+        return letterRepository.findAllBySender(member, PageRequest.of(page, 10));
     }
 }

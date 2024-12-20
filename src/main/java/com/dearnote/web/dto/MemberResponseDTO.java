@@ -36,8 +36,10 @@ public class MemberResponseDTO {
         Long receiverId;
         String name;
         LetterType type;
+        Boolean mark;
         Boolean isPublic;
         String keyword;
         LocalDateTime sentAt;
     }
+
 }

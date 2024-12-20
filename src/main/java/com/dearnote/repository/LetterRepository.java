@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LetterRepository extends JpaRepository<Letter, Long> {
 
+
     Page<Letter> findAllBySender(Member member, Pageable pageable);
     Page<Letter> findAllByReceiver(Member member, Pageable pageable);
+
+
 }

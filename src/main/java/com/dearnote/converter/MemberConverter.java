@@ -17,6 +17,7 @@ public class MemberConverter {
                 .receiverId(letter.getReceiver().getId())
                 .name(letter.getReceiver().getName())
                 .type(letter.getType())
+                .mark(letter.getMark())
                 .isPublic(letter.getIsPublic())
                 .keyword(letter.getKeyword().getKeyword())
                 .sentAt(letter.getCreatedAt())
