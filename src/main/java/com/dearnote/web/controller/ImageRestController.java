@@ -8,23 +8,19 @@ import com.dearnote.service.aws.S3Service;
 import com.dearnote.service.image.ImageCommandService;
 import com.dearnote.service.image.ImageQueryService;
 import com.dearnote.service.letter.LetterQueryService;
+import com.dearnote.validation.annotation.ExistImage;
 import com.dearnote.validation.annotation.ExistLetter;
 import com.dearnote.web.dto.image.ImageResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/dearnote")
@@ -70,9 +66,23 @@ public class ImageRestController {
     })
     public ApiResponse<ImageResponseDTO.GetImageResponseDTO> getImage(@ExistLetter @PathVariable Long letterId) {
         Letter letter = letterQueryService.getLetter(letterId);
-        Image image = imageQueryService.getImage(letter);
+        Image image = imageQueryService.getImageByLetter(letter);
 
         return ApiResponse.onSuccess(ImageConverter.toGetImageDTO(image, letter));
+    }
+
+    @DeleteMapping("/images/{imageId}")
+    @Operation(summary = "이미지 삭제 API", description = "이미지를 삭제하는 API입니다.")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+    })
+    @Parameters({
+            @Parameter(name = "imageId", description = "삭제할 사진의 아이디, path variable 입니다.")
+    })
+    public ApiResponse<Void> delete(@ExistImage @PathVariable Long imageId) {
+        Image image = imageQueryService.getImage(imageId);
+        imageCommandService.deleteImage(image);
+        return ApiResponse.onSuccess(null);
     }
 
     private String uploadToS3(MultipartFile file) throws IOException {
