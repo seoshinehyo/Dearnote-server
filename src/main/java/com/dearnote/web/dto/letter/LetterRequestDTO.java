@@ -46,7 +46,6 @@ public class LetterRequestDTO {
     @Setter
     public static class ReceiverRequestDTO{  // 수신자 지정 요청 DTO
         @NotBlank(message = "수신자 이메일은 필수입니다.")
-        @Email(message = "유효한 이메일 주소여야 합니다.")
         private String receiverEmail;
     }
 }

@@ -68,7 +68,7 @@ public class MemberQueryServiceImpl implements MemberQueryService {
     @Override
     public Member getMemberByEmail(String email){
         return memberRepository.findByEmail(email)
-                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.EMAIL_MEMBER_NOT_FOUND));
     }
 
 }
