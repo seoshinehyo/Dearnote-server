@@ -18,4 +18,5 @@ public class LetterQueryServiceImpl implements LetterQueryService {
         return letterRepository.findById(letterId)
                 .orElseThrow(() -> new LetterHandler(ErrorStatus.LETTER_NOT_FOUND));
     }
+
 }

@@ -65,4 +65,10 @@ public class MemberQueryServiceImpl implements MemberQueryService {
         return letterRepository.findAllBySenderAndMarkTrue(member, PageRequest.of(page, 10));
     }
 
+    @Override
+    public Member getMemberByEmail(String email){
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
+    }
+
 }

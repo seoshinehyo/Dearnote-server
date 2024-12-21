@@ -74,4 +74,14 @@ public class LetterResponseDTO {
         private String keyword;
         private String sentence;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReceiverResponseDTO{  // 수신자 지정 응답 DTO
+        private Long receiverId;
+        private String receiverName;
+    }
+
 }
