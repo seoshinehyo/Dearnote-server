@@ -2,6 +2,7 @@ package com.dearnote.service;
 
 import com.dearnote.domain.Member;
 import com.dearnote.repository.MemberRepository;
+import com.dearnote.service.member.MemberQueryService;
 import com.dearnote.web.dto.OAuth2.CustomOAuth2User;
 import com.dearnote.web.dto.OAuth2.MemberDTO;
 import com.dearnote.web.dto.OAuth2.NaverResponse;

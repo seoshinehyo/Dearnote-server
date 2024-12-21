@@ -1,10 +1,10 @@
 package com.dearnote.apipayload;
 
+import com.dearnote.apipayload.code.BaseCode;
+import com.dearnote.apipayload.code.status.SuccessStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.dearnote.apipayload.code.BaseCode;
-import com.dearnote.apipayload.code.status.SuccessStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
