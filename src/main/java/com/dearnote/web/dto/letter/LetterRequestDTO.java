@@ -37,7 +37,5 @@ public class LetterRequestDTO {
         String content;
 
         String imageDescription;
-
-        // 이미지 추가 예정
     }
 }
