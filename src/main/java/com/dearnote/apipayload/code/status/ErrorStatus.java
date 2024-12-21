@@ -22,6 +22,7 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // 회원 관련 에러
     MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER4001", "해당 회원이 없습니다."),
+    EMAIL_MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER404", "해당 이메일의 회원을 찾을 수 없습니다."),
 
     // 키워드 관련 에러
     KEYWORD_NOT_FOUND(HttpStatus.BAD_REQUEST, "KEYWORD4001", "해당 키워드가 없습니다."),

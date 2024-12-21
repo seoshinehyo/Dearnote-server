@@ -53,4 +53,11 @@ public class LetterConverter {
                 .sentence(keyword.getSentence())
                 .build();
     }
+
+    public static LetterResponseDTO.ReceiverResponseDTO toReceiverResponseDTO(Member receiver){  // 수신자 지정 응답
+        return LetterResponseDTO.ReceiverResponseDTO.builder()
+                .receiverId(receiver.getId())
+                .receiverName(receiver.getName())
+                .build();
+    }
 }

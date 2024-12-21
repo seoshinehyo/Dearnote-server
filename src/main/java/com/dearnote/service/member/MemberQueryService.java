@@ -22,4 +22,7 @@ public interface MemberQueryService {
 
     // 저장한 편지함 조회
     Page<Letter> getMarkedLetterList(Long memberId, Integer page);
+
+    // 이메일로 수신자 지정
+    Member getMemberByEmail(String Email);
 }

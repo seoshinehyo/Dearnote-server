@@ -63,7 +63,7 @@ public class LetterRestController {
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
     })
-    public ApiResponse<LetterResponseDTO.SendLetterResponseDTO> send(@RequestBody @Valid LetterRequestDTO.SendLetterRequestDTO request){
+    public ApiResponse<LetterResponseDTO.SendLetterResponseDTO> send(@RequestBody @Valid LetterRequestDTO.SendLetterRequestDTO request) {
 
         Member sender = memberQueryService.getMember(request.getSenderId());
         Member receiver = memberQueryService.getMember(request.getReceiverId());
@@ -81,10 +81,10 @@ public class LetterRestController {
     @GetMapping("/letter/random")
     @Operation(summary = "키워드 랜덤 받아오기 api", description = "랜덤한 키워드를 받아오는 api입니다.")
     @ApiResponses({
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
-            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!", content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료", content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함", content = @Content(schema = @Schema(implementation = ApiResponse.class))),
     })
     public ApiResponse<LetterResponseDTO.RandomKeywordResponseDTO> getRandomKeyword() {
         Keyword randomKeyword = keywordQueryService.getRandomKeyword();
@@ -93,4 +93,19 @@ public class LetterRestController {
 
         return ApiResponse.onSuccess(responseDTO);
     }
+
+    @PostMapping("")
+    @Operation(summary = "수신자 지정 api", description = "편지의 수신자를 지정하는 api 입니다.")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
+    })
+    public ApiResponse<LetterResponseDTO.ReceiverResponseDTO> chooseReceiver(
+            @RequestBody @Valid LetterRequestDTO.ReceiverRequestDTO request){
+
+        Member receiver = memberQueryService.getMemberByEmail(request.getReceiverEmail());
+        LetterResponseDTO.ReceiverResponseDTO responseDTO = LetterConverter.toReceiverResponseDTO(receiver);
+
+        return ApiResponse.onSuccess(responseDTO);
+    }
+
 }

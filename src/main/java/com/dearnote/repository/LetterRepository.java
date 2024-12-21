@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface LetterRepository extends JpaRepository<Letter, Long> {
     Page<Letter> findAllBySender(Member member, Pageable pageable);
@@ -16,5 +18,6 @@ public interface LetterRepository extends JpaRepository<Letter, Long> {
     Page<Letter> findAllBySenderAndType(Member member, LetterType type, Pageable pageable);
 
     Page<Letter> findAllBySenderAndMarkTrue(Member member, Pageable pageable);
+
 
 }
