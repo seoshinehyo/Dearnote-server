@@ -23,9 +23,11 @@ public class KeywordQueryServiceImpl implements KeywordQueryService {
     }
 
     @Override
-    public Keyword getRandomKeyword(){
-        List<Keyword> allKeywords = keywordRepository.findAll();
-        Collections.shuffle(allKeywords);
-        return allKeywords.get(0);
+    public Keyword getRandomKeyword() {
+        Keyword keyword = keywordRepository.findRandomKeyword();
+        if (keyword == null) {
+            throw new MemberHandler(ErrorStatus.KEYWORD_NOT_FOUND);
+        }
+        return keyword;
     }
 }
