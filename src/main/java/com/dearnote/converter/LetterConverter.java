@@ -45,4 +45,12 @@ public class LetterConverter {
                 .createdAt(letter.getCreatedAt())
                 .build();
     }
+
+    public static LetterResponseDTO.RandomKeywordResponseDTO toRandomKeywordResponseDTO(Keyword keyword){  // 랜덤한 키워드 응답
+        return LetterResponseDTO.RandomKeywordResponseDTO.builder()
+                .keywordId(keyword.getId())
+                .keyword(keyword.getKeyword())
+                .sentence(keyword.getSentence())
+                .build();
+    }
 }
