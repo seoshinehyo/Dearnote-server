@@ -5,5 +5,7 @@ import com.dearnote.domain.Letter;
 
 public interface ImageQueryService {
 
-    Image getImage(Letter letter);
+    Image getImageByLetter(Letter letter);
+
+    Image getImage(Long imageId);
 }
