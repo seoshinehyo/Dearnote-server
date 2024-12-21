@@ -61,7 +61,6 @@ public class LetterResponseDTO {
         private Wax wax;
         private Long keywordId;
         private String content;
-        // 이미지 추가 예정
         private LocalDateTime createdAt;
     }
 

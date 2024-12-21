@@ -15,4 +15,15 @@ public class ImageConverter {
                 .letterId(letter.getId())
                 .build();
     }
+
+    public static ImageResponseDTO.GetImageResponseDTO toGetImageDTO(Image image, Letter letter) { // 이미지 조회
+
+        return ImageResponseDTO.GetImageResponseDTO.builder()
+                .originFileName(image.getOriginFileName())
+                .storeFileUrl(image.getStoreFileUrl())
+                .storeFileName(image.getStoreFileName())
+                .size(image.getSize())
+                .letterId(letter.getId())
+                .build();
+    }
 }

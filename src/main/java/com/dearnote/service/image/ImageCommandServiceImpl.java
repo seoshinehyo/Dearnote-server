@@ -26,4 +26,10 @@ public class ImageCommandServiceImpl implements ImageCommandService {
 
         return imageRepository.save(image); // 저장된 Image 엔티티 반환
     }
+
+    @Override
+    @Transactional
+    public void deleteImage(Image image) {
+        imageRepository.delete(image);
+    }
 }
