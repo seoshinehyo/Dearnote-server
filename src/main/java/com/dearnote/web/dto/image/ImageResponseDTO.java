@@ -19,4 +19,17 @@ public class ImageResponseDTO {
         private Integer size;
         private Long letterId;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class GetImageResponseDTO {
+
+        private String originFileName;
+        private String storeFileUrl;
+        private String storeFileName;
+        private Integer size;
+        private Long letterId;
+    }
 }
