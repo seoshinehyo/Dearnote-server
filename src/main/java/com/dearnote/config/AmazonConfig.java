@@ -25,14 +25,10 @@ public class AmazonConfig {
     @Value("${cloud.aws.credentials.secret-key}")
     private String secretKey;
 
-    @Value("${cloud.aws.region}")
+    @Value("${cloud.aws.region.static}")
     private String region;
 
-    @PostConstruct
-    public void init() {
-        this.awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
-    }
-
+    // AWS S3 클라이언트 스프링 빈으로 등록
     @Bean
     public AmazonS3 amazonS3() {
         AWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
@@ -40,10 +36,5 @@ public class AmazonConfig {
                 .withRegion(region)
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
                 .build();
-    }
-
-    @Bean
-    public AWSCredentialsProvider awsCredentialsProvider() {
-        return new AWSStaticCredentialsProvider(awsCredentials);
     }
 }

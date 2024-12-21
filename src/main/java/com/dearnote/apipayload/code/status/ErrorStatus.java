@@ -25,7 +25,10 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER4001", "해당 회원이 없습니다."),
 
     // 키워드 관련 에러
-    KEYWORD_NOT_FOUND(HttpStatus.BAD_REQUEST, "KEYWORD4001", "해당 키워드가 없습니다.");
+    KEYWORD_NOT_FOUND(HttpStatus.BAD_REQUEST, "KEYWORD4001", "해당 키워드가 없습니다."),
+
+    // 이미지 업로드 관련 에러
+    IMAGE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "IMAGE5001", "이미지 업로드에 실패했습니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
