@@ -6,6 +6,7 @@ import com.dearnote.domain.Keyword;
 import com.dearnote.domain.Letter;
 import com.dearnote.domain.LetterBox;
 import com.dearnote.domain.Member;
+import com.dearnote.domain.enums.Font;
 import com.dearnote.domain.enums.LetterPaper;
 import com.dearnote.domain.enums.Wax;
 import com.dearnote.service.keyword.KeywordQueryService;
@@ -56,6 +57,15 @@ public class LetterRestController {
     public ApiResponse<LetterResponseDTO.WaxResponseDTOList> getWaxList() {
 
         return ApiResponse.onSuccess(Wax.toWaxDTOList());
+    }
+
+    @GetMapping("/font")
+    @Operation(summary = "글씨체 조회 API", description = "글씨체를 조회하는 API입니다.")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
+    })
+    public ApiResponse<LetterResponseDTO.FontResponseDTOList> getFontList() {
+        return ApiResponse.onSuccess(Font.toFontDTOList());
     }
 
     @PostMapping("/letters")
