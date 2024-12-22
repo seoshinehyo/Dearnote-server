@@ -5,6 +5,7 @@ import com.dearnote.domain.enums.LetterStatus;
 import com.dearnote.repository.LetterRepository;
 import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class LetterCommandServiceImpl implements LetterCommandService {
@@ -38,7 +40,7 @@ public class LetterCommandServiceImpl implements LetterCommandService {
                 letter.setStatus(LetterStatus.UNLOCKED);
                 updateLetterStatus(letter);
             } catch (Exception e) {
-                System.err.println("편지 상태 변경 중 오류 발생: " + e.getMessage());
+                log.error("편지 상태 변경 중 오류 발생: {}", e.getMessage(), e);
             }
         }, 3, TimeUnit.HOURS);
     }
