@@ -27,7 +27,7 @@ spring:
         registration:
           naver:
             client-name: naver
-            client-id: ${NAVER_CLient_ID}     # 네이버 클라이언트 ID
+            client-id: ${NAVER_CLIENT_ID}     # 네이버 클라이언트 ID
             client-secret: ${NAVER_SECRET_ID}         # 네이버 클라이언트 비밀번호
             redirect-uri: http://localhost:8080/login/oauth2/code/naver
             authorization-grant-type: authorization_code
