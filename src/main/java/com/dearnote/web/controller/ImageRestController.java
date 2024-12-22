@@ -57,12 +57,12 @@ public class ImageRestController {
     }
 
     @GetMapping("/{letterId}/images")
-    @Operation(summary = "이미지 조회 API", description = "이미지를 조회하는 API입니다.")
+    @Operation(summary = "이미지 조회 API", description = "편지에 등록된 이미지를 조회하는 API입니다.")
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
     })
     @Parameters({
-            @Parameter(name = "letterId", description = "조회할 이미지의 아이디, path variable 입니다.")
+            @Parameter(name = "letterId", description = "이미지가 등록된 편지의 아이디, path variable 입니다.")
     })
     public ApiResponse<ImageResponseDTO.GetImageResponseDTO> getImage(@ExistLetter @PathVariable Long letterId) {
         Letter letter = letterQueryService.getLetter(letterId);
