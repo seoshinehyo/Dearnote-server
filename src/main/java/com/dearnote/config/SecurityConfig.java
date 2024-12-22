@@ -17,6 +17,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -37,7 +38,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .cors(corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
+                .cors((corsCustomizer -> corsCustomizer.configurationSource(new CorsConfigurationSource() {
 
                     @Override
                     public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -50,12 +51,11 @@ public class SecurityConfig {
                         configuration.setAllowedHeaders(Collections.singletonList("*"));
                         configuration.setMaxAge(3600L);
 
-                        configuration.setExposedHeaders(Collections.singletonList("Set-Cookie"));
                         configuration.setExposedHeaders(Collections.singletonList("Authorization"));
 
                         return configuration;
                     }
-                }));
+                })));
 
         //csrf disable
         http
@@ -84,13 +84,14 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/docs").permitAll()
+                        .requestMatchers("/docs","/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/login/oauth2/**").permitAll()
                         .requestMatchers("/","/wax","/logout","/api/auth/status","/dearnote/letters/{memberId}/all","/dearnote/letters/{memberId}/received"
                         ,"/dearnote/letters/{memberId}/sent","/dearnote/letters/{memberId}/self","/dearnote/letters/{memberId}/mark",
                                 "/dearnote/letter/random","/dearnote/letterPaper","/dearnote/font","/dearnote/wax","/dearnote/{letterId}/images","/dearnote"
                                 ,"/dearnote/letters","/dearnote/{letterId}/images","/dearnote/images/{imageId}"
-                                ).permitAll()
-                        .anyRequest().authenticated());
+                                ).permitAll());
+
 
         //세션 설정 : STATELESS
         http
