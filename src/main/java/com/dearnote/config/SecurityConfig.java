@@ -84,7 +84,8 @@ public class SecurityConfig {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/","/wax","/logout","/docs","/api/auth/status","/dearnote/letters/{memberId}/all","/dearnote/letters/{memberId}/received"
+                        .requestMatchers("/docs").permitAll()
+                        .requestMatchers("/","/wax","/logout","/api/auth/status","/dearnote/letters/{memberId}/all","/dearnote/letters/{memberId}/received"
                         ,"/dearnote/letters/{memberId}/sent","/dearnote/letters/{memberId}/self","/dearnote/letters/{memberId}/mark",
                                 "/dearnote/letter/random","/dearnote/letterPaper","/dearnote/font","/dearnote/wax","/dearnote/{letterId}/images","/dearnote"
                                 ,"/dearnote/letters","/dearnote/{letterId}/images","/dearnote/images/{imageId}"
