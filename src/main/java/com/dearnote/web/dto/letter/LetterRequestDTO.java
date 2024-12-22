@@ -16,10 +16,10 @@ public class LetterRequestDTO {
     @Setter
     public static class SendLetterRequestDTO { // 편지 전송 요청 DTO
 
-        @ExistMember
+        @NotNull
         Long senderId;
 
-        @ExistMember
+        @NotNull
         Long receiverId;
 
         @NotNull
