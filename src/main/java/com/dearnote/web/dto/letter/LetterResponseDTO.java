@@ -52,6 +52,22 @@ public class LetterResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
+    public static class FontResponseDTO {
+        private String name;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class FontResponseDTOList { // 글씨체 조회 응답 DTO
+        private List<LetterResponseDTO.FontResponseDTO> fontList;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class SendLetterResponseDTO { // 편지 전송 응답 DTO
         private Long letterId;
         private Long senderId;
