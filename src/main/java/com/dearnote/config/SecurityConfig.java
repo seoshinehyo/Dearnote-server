@@ -19,8 +19,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import java.util.Collections;
 import java.util.List;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
