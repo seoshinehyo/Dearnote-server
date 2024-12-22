@@ -1,7 +1,7 @@
 package com.dearnote.service.image;
 
 import com.dearnote.apipayload.code.status.ErrorStatus;
-import com.dearnote.apipayload.exception.handler.LetterHandler;
+import com.dearnote.apipayload.exception.handler.ImageHandler;
 import com.dearnote.domain.Image;
 import com.dearnote.domain.Letter;
 import com.dearnote.repository.ImageRepository;
@@ -22,6 +22,6 @@ public class ImageQueryServiceImpl implements ImageQueryService {
     @Override
     public Image getImage(Long imageId) {
         return imageRepository.findById(imageId)
-                .orElseThrow(() -> new LetterHandler(ErrorStatus.IMAGE_NOT_FOUND));
+                .orElseThrow(() -> new ImageHandler(ErrorStatus.IMAGE_NOT_FOUND));
     }
 }
